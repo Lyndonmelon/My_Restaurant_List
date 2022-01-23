@@ -1,13 +1,6 @@
-const mongoose = require("mongoose")
+const db = require("../../config/mongoose")
 const restaurant = require("../restaurant")
 const restaurantListFile = require("../../restaurant.json")
-
-mongoose.connect("mongodb://localhost/restaurant")
-const db = mongoose.connection
-
-db.on('error', () => {
-    console.log("DB Error")
-})
 
 db.once("open", () => {
     console.log("DB connected.")
@@ -26,6 +19,7 @@ db.once("open", () => {
                 description: rest.description 
             })
         console.log("seed generated")
-        return
     })
+    return
 })
+
